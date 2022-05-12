@@ -1,44 +1,32 @@
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DataSet {
     
-    private String location;
-    private int year;
-    private Double nitrite;
-    private Double nitrate;
-    private Double phosphate;
-    private Double conduc;
-    private Double turbidity;
-    private Double temp;
-    private Double TDS;
-    private Double pH;
-    private Double alk;
-    private Double Fchlorine;
-    private Double Tchlorine;
-    private Double salinity;
-    private Double hardness;
+    private ArrayList<Location> locations = new ArrayList<Location>();
 
-    public DataSet (String filename) throws FileNotFoundException {
-        Scanner dataIn = new Scanner(new File (filename));
-        while (dataIn.hasNext()) {
-            location = dataIn.next();
-            year = dataIn.nextInt();
-            nitrite = dataIn.nextDouble();
-            nitrate = dataIn.nextDouble();
-            phosphate = dataIn.nextDouble();
-            conduc = dataIn.nextDouble();
-            turbidity = dataIn.nextDouble();
-            temp = dataIn.nextDouble();
-            TDS = dataIn.nextDouble();
-            pH = dataIn.nextDouble();
-            alk = dataIn.nextDouble();
-            Fchlorine = dataIn.nextDouble();
-            Tchlorine = dataIn.nextDouble();
-            salinity = dataIn.nextDouble();
-            hardness = dataIn.nextDouble();
+    public DataSet (String pathname) throws FileNotFoundException {
+        Scanner lineChopper = new Scanner(new File(pathname));
+        while (lineChopper.hasNextLine()) {
+            locations.add(new Location(lineChopper.nextLine()));
         }
+    }
+
+    public static void main (String[] args) throws IOException {
+        Scanner dataIn = new Scanner(new File("AllTheDataCorrected.txt"));
+        PrintWriter dataOut = new PrintWriter(new BufferedWriter(new FileWriter(new File("Nitrite_vs_pH.txt"))));
+        while (dataIn.hasNextLine()) {
+            Location data = new Location(dataIn.nextLine());
+            dataOut.println(data.getLocation() + " " + data.getNitrite() + " " + data.getPH());
+        }
+        dataOut.flush();
+        dataOut.close();
     }
 
 }
