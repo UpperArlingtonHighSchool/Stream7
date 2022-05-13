@@ -1,3 +1,4 @@
+package src.main.java;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,6 +17,39 @@ public class DataSet {
         while (lineChopper.hasNextLine()) {
             locations.add(new Location(lineChopper.nextLine()));
         }
+    }
+
+    public double getPHAverage () {
+        double total = 0;
+        for (Location item : locations) {
+            total += item.getPH();
+        }
+        return total / (double)locations.size();
+    }
+
+    public double getNitriteAverage () {
+        double total = 0;
+        for (Location item : locations) {
+            total += item.getNitrite();
+        }
+        return total / (double)locations.size();
+    }
+
+    public double[] getPHRange () {
+        double min = Double.MAX_VALUE;
+        for (Location item : locations) {
+            if (item.getPH() < min) {
+                min = item.getPH();
+            }
+        }
+
+        double max = Double.MIN_VALUE;
+        for (Location item : locations) {
+            if (item.getPH() > min) {
+                max = item.getPH();
+            }
+        }
+        return new double[]{min, max};
     }
 
     public static void main (String[] args) throws IOException {
