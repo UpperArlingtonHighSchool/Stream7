@@ -12,5 +12,5 @@ plugins {
 }
 
 application {
-    mainClass = 'SetCity'
+    mainClass = 'src.main.java.streamSevenMain'
 }
