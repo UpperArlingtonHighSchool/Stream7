@@ -10,7 +10,7 @@ public class streamSevenMain {
         System.out.println("Acceptable pH level = "+ collin.getAcceptablePH());
         
         //This is the part where Jack's program draws a cool chart of our values with JFreeCharts
-        ChartRunner jack = new ChartRunner();
+        chartRunner jack = new chartRunner();
         
         
         
