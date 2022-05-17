@@ -14,3 +14,11 @@ plugins {
 application {
     mainClass = 'src.main.java.streamSevenMain'
 }
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.jfree', name: 'jfreechart', version: '1.0.19'
+}
