@@ -17,6 +17,8 @@ public class DataSet {
 
     private double[] pHs = new double[locations.size()];
     private double[] nitrites = new double[locations.size()];
+
+    private double[][] data = new double[][]{pHs, nitrites};
     
     private DoubleSummaryStatistics pHStats;
     private DoubleSummaryStatistics nitriteStats;
