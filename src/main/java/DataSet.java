@@ -15,15 +15,18 @@ public class DataSet {
     
     private ArrayList<Location> locations = new ArrayList<Location>();
 
-    private double[] pHs = new double[locations.size()];
-    private double[] nitrites = new double[locations.size()];
+    private double[] pHs;
+    private double[] nitrites;
 
-    private double[][] data = new double[][]{pHs, nitrites};
+    private double[][] data;
     
     private DoubleSummaryStatistics pHStats;
     private DoubleSummaryStatistics nitriteStats;
 
     public DataSet (String pathname) throws FileNotFoundException {
+        pHs = new double[locations.size()];
+        nitrites = new double[locations.size()];
+
         Scanner lineChopper = new Scanner(new File(pathname));
         while (lineChopper.hasNextLine()) {
             locations.add(new Location(lineChopper.nextLine()));
@@ -37,6 +40,12 @@ public class DataSet {
         DoubleSummaryStatistics pHStats = DoubleStream.of(pHs).summaryStatistics();
         DoubleSummaryStatistics nitriteStats = DoubleStream.of(nitrites).summaryStatistics();
 
+        data = new double[][]{pHs, nitrites};
+
+    }
+
+    public double[][] getMatrix () {
+        return data;
     }
 
     public double getPHAverage () {
