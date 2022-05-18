@@ -1,5 +1,6 @@
 package src.main.java;
-
+import org.jfree.*;
+import org.jfree.chart.JFreeChart;
 public class streamSevenMain {
 
     public static void main(String[] args) {
@@ -9,10 +10,10 @@ public class streamSevenMain {
         System.out.println("Acceptable Nitrite level = "+ collin.getAcceptableNitrite());
         System.out.println("Acceptable pH level = "+ collin.getAcceptablePH());
         
-        //This is the part where Jack's program draws a cool chart of our values with JFreeCharts
-        chartRunner jack = new chartRunner();
+        // //This is the part where Jack's program draws a cool chart of our values with JFreeCharts
+        // chartRunner jack = new chartRunner();
         
-        
+        JFreeChart test = new JFreeChart();
         
     }
 
