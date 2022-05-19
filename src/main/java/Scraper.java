@@ -10,19 +10,25 @@ import java.util.regex.Pattern;
 public class Scraper {
 
     private double nitrite;
-    private double pH;
+    private double pHMin;
+    private double pHMax;
 
-    final String site = "https://www.atsdr.cdc.gov/csem/nitrate-nitrite/standards.html";
+    final String nitriteSite = "https://www.atsdr.cdc.gov/csem/nitrate-nitrite/standards.html";
     final Pattern nitritePattern = Pattern.compile("and for nitrites at (.*?) ppm");
+
+    final String pHSite = "https://www.epa.gov/caddis-vol2/ph";
+    final Pattern pHPattern = Pattern.compile("falling between pH (.*?)-(.*?) U.S.");
 
     public Scraper() {
         try {
-            URL url = new URL(site);
+
+            // Nitrite
+            URL url = new URL(nitriteSite);
             URLConnection conn = url.openConnection();
             InputStream is = conn.getInputStream();
 
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            String line = null;
+            String line;
             while ((line = br.readLine()) != null) {
                 if (line.trim().contains("and for nitrites at")) {
                     Matcher matcher = nitritePattern.matcher(line.trim());
@@ -31,6 +37,24 @@ public class Scraper {
                     }
                 }
             }
+            is.close();
+
+            // pH
+            url = new URL(pHSite);
+            conn = url.openConnection();
+            is = conn.getInputStream();
+
+            br = new BufferedReader(new InputStreamReader(is));
+            while ((line = br.readLine()) != null) {
+                if (line.trim().contains("the optima for most aquatic organisms falling between")) {
+                    Matcher matcher = pHPattern.matcher(line.trim());
+                    if (matcher.find()) {
+                        pHMin = Double.parseDouble(matcher.group(1));
+                        pHMax = Double.parseDouble(matcher.group(2));
+                    }
+                }
+            }
+            is.close();
 
         } catch(IOException e) {
             e.printStackTrace();
@@ -41,7 +65,18 @@ public class Scraper {
         return nitrite;
     }
 
-    public double getAcceptablePH() {
-        return 0;
+    public double getMinAcceptablePH() {
+        return pHMin;
     }
+
+    public double getMaxAcceptablePH() {
+        return pHMax;
+    }
+
+    /*public static void main(String[] args) {
+        Scraper scraper = new Scraper();
+        System.out.println(scraper.getAcceptableNitrite());
+        System.out.println(scraper.getMinAcceptablePH());
+        System.out.println(scraper.getMaxAcceptablePH());
+    }*/
 }
