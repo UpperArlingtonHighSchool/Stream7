@@ -64,6 +64,10 @@ public class DataSet {
         return new double[] {nitriteStats.getMin(), nitriteStats.getMax()};
     }
 
+    public ArrayList<Location> getLocations() {
+        return locations;
+    }
+
     // public double getPHAverage () {
     //     double total = 0;
     //     for (Location item : locations) {
@@ -115,12 +119,13 @@ public class DataSet {
     // }
 
 
-    public static void main (String[] args) throws IOException {
-        Scanner dataIn = new Scanner(new File("AllTheDataCorrected.txt"));
-        PrintWriter dataOut = new PrintWriter(new BufferedWriter(new FileWriter(new File("Nitrite_vs_pH.txt"))));
+    public void main (String[] args) throws IOException {
+        Scanner dataIn = new Scanner(new File("src/main/resources/data/AllTheDataCorrected.txt"));
+        PrintWriter dataOut = new PrintWriter(new BufferedWriter(new FileWriter(new File("src/main/resources/data/Nitrite_vs_pH.txt"))));
         while (dataIn.hasNextLine()) {
             Location data = new Location(dataIn.nextLine());
-            dataOut.println(data.getLocation() + " " + data.getNitrite() + " " + data.getPH());
+            locations.add(data);
+            dataOut.println(data.getLocation() + " " + data.getYear() + " " + data.getNitrite() + " " + data.getPH());
         }
         dataOut.flush();
         dataOut.close();
