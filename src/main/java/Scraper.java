@@ -9,8 +9,13 @@ import java.util.regex.Pattern;
 
 public class Scraper {
 
+    /** Maximum acceptable Nitrite value (ppm) */
     private double nitrite;
+
+    /** Minimum acceptable pH value */
     private double pHMin;
+
+    /** Maximum acceptable pH value */
     private double pHMax;
 
     final String nitriteSite = "https://www.atsdr.cdc.gov/csem/nitrate-nitrite/standards.html";
@@ -21,7 +26,6 @@ public class Scraper {
 
     public Scraper() {
         try {
-
             // Nitrite
             URL url = new URL(nitriteSite);
             URLConnection conn = url.openConnection();
@@ -61,14 +65,26 @@ public class Scraper {
         }
     }
 
+    /**
+     *
+     * @return highest acceptable nitrite value
+     */
     public double getAcceptableNitrite() {
         return nitrite;
     }
 
+    /**
+     *
+     * @return lowest acceptable pH value
+     */
     public double getMinAcceptablePH() {
         return pHMin;
     }
 
+    /**
+     *
+     * @return highest acceptable pH value
+     */
     public double getMaxAcceptablePH() {
         return pHMax;
     }
