@@ -14,10 +14,10 @@ public class streamSevenMain {
         System.out.println("Acceptable minimum pH level = "+ minPH);
         System.out.println("Acceptable maximum pH level = "+ maxPH);
         //Hey Dr. Kahle! How are you doing? I hope you are having a good day! 
-<<<<<<< HEAD
+
         // //This is the part where Jack's program draws a cool chart of our values with JFreeCharts
         // chartRunner jack = new chartRunner();
-=======
+
         //This is the part where Nathan's program takes in the data from a text file and puts it into a matrix
         DataSet pH_vs_nitrite = new DataSet("src/main/resources/data/Nitrite_vs_pH.txt");
         System.out.println("Here is a matrix containing each stream's pH and nitrite values-");
@@ -32,7 +32,7 @@ public class streamSevenMain {
         //This is the part where Jack's program draws a cool chart of our values with JFreeCharts
         chartRunner jack = new chartRunner(pH_vs_nitrite.getMatrix());
         
->>>>>>> dc174e96549940438b306361bc5308a43fef1efb
+
         
         JFreeChart test = new JFreeChart();
         
