@@ -1,6 +1,8 @@
 package src.main.java;
-import org.jfree.*;
 import java.io.File;
+import java.util.ArrayList;
+
+import org.jfree.*;
 import org.jfree.chart.JFreeChart;
 public class streamSevenMain {
 
@@ -24,15 +26,21 @@ public class streamSevenMain {
         System.out.println("Here is a matrix containing each stream's pH and nitrite values-");
         Object[][] mat = pH_vs_nitrite.getMatrix();
         
-        //This is where we compare the acceptable vs observed values
-        int goodCount = 0;
-        int badCount = 0;
+        //Here we use Nathan's methods to do great things
+        double pHAverage = pH_vs_nitrite.getPHAverage();
+        double nitriteAverage = pH_vs_nitrite.getNitriteAverage();
+        double[] nitriteRange = pH_vs_nitrite.getNitriteRange();
+        double[] pHRange = pH_vs_nitrite.getPHRange();
+        double correlationCoefficient = pH_vs_nitrite.getCorrelationCoefficient();
+        ArrayList<Object> locations = pH_vs_nitrite.getLocations();
+        
         
        
 
         //This is the part where Jack's program draws a cool chart of our values with JFreeCharts
         chartRunner jack = new chartRunner(pH_vs_nitrite.getMatrix());
         File chart = jack.getChart();
+
         
         
     }
