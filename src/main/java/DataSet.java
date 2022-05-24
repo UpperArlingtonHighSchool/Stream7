@@ -7,10 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.DoubleSummaryStatistics;
 import java.util.Scanner;
 import java.util.stream.DoubleStream;
-import java.util.DoubleSummaryStatistics;
 
 public class DataSet {
     
@@ -79,6 +78,41 @@ public class DataSet {
 
     public ArrayList<Location> getLocations() {
         return locations;
+    }
+
+    //From https://www.geeksforgeeks.org/program-find-correlation-coefficient/
+    public double getCorrelationCoefficient () {
+        int n = pHs.length;
+        double[] X = pHs;
+        double[] Y = nitrites;
+
+        double sum_X = 0, sum_Y = 0, sum_XY = 0;
+        double squareSum_X = 0, squareSum_Y = 0;
+       
+        for (int i = 0; i < n; i++)
+        {
+            // sum of elements of array X.
+            sum_X = sum_X + X[i];
+       
+            // sum of elements of array Y.
+            sum_Y = sum_Y + Y[i];
+       
+            // sum of X[i] * Y[i].
+            sum_XY = sum_XY + X[i] * Y[i];
+       
+            // sum of square of array elements.
+            squareSum_X = squareSum_X + X[i] * X[i];
+            squareSum_Y = squareSum_Y + Y[i] * Y[i];
+        }
+       
+        // use formula for calculating correlation 
+        // coefficient.
+        float corr = (float)(n * sum_XY - sum_X * sum_Y)/
+                     (float)(Math.sqrt((n * squareSum_X -
+                     sum_X * sum_X) * (n * squareSum_Y - 
+                     sum_Y * sum_Y)));
+       
+        return corr;
     }
 
     // public double getPHAverage () {
