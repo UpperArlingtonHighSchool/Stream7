@@ -32,7 +32,7 @@ public class streamSevenMain {
         double[] nitriteRange = pH_vs_nitrite.getNitriteRange();
         double[] pHRange = pH_vs_nitrite.getPHRange();
         double correlationCoefficient = pH_vs_nitrite.getCorrelationCoefficient();
-        ArrayList<Object> locations = pH_vs_nitrite.getLocations();
+        ArrayList<Location> locations = pH_vs_nitrite.getLocations();
         
         
        
