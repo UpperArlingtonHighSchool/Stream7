@@ -8,6 +8,7 @@ public class chartRunner extends ApplicationFrame {
 
     JFreeChart barChart;
     DefaultCategoryDataset data;
+    File BarChart;
 
     public chartRunner(Object[][] dataIn) {
         super("Application");
@@ -20,8 +21,12 @@ public class chartRunner extends ApplicationFrame {
                 true, true, false);
         int width = 640;
         int height = 480;
-        File BarChart = new File("BarChart.jpeg");
+        BarChart = new File("BarChart.jpeg");
         ChartUtilities.saveChartAsJPEG(BarChart, barChart, width, height);
+    }
+
+    public File getChart() {
+        return BarChart;
     }
 
     public DefaultCategoryDataset getData(Object[][] dat) {
