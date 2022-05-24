@@ -21,7 +21,7 @@ public class streamSevenMain {
         //This is the part where Nathan's program takes in the data from a text file and puts it into a matrix
         DataSet pH_vs_nitrite = new DataSet("src/main/resources/data/Nitrite_vs_pH.txt");
         System.out.println("Here is a matrix containing each stream's pH and nitrite values-");
-        double[][] mat = pH_vs_nitrite.getMatrix();
+        Object[][] mat = pH_vs_nitrite.getMatrix();
         
         //This is where we compare the acceptable vs observed values
         int goodCount = 0;
