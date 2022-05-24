@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.stream.DoubleStream;
 import java.util.DoubleSummaryStatistics;
@@ -15,15 +16,19 @@ public class DataSet {
     
     private ArrayList<Location> locations = new ArrayList<Location>();
 
+    private Object[] location;
+    private Object[] year;
     private double[] pHs;
     private double[] nitrites;
 
-    private double[][] data;
+    private Object[][] data;
     
     private DoubleSummaryStatistics pHStats;
     private DoubleSummaryStatistics nitriteStats;
 
     public DataSet (String pathname) throws FileNotFoundException {
+        location = new Object[locations.size()];
+        year = new Object[locations.size()];
         pHs = new double[locations.size()];
         nitrites = new double[locations.size()];
 
@@ -33,6 +38,8 @@ public class DataSet {
         }
 
         for (int i = 0; i < locations.size(); i++) {
+            location[i] = locations.get(i).getLocation();
+            year[i] = locations.get(i).getYear();
             pHs[i] = locations.get(i).getPH();
             nitrites[i] = locations.get(i).getNitrite();
         }
@@ -40,12 +47,18 @@ public class DataSet {
         DoubleSummaryStatistics pHStats = DoubleStream.of(pHs).summaryStatistics();
         DoubleSummaryStatistics nitriteStats = DoubleStream.of(nitrites).summaryStatistics();
 
-        data = new double[][]{pHs, nitrites};
-
     }
 
-    public double[][] getMatrix () {
-        return data;
+    public Object[][] getMatrix () {
+        Object[] pHsObjects = new Object[locations.size()];
+        Object[] nitriteObjects = new Object[locations.size()];
+        for (int i = 0; i < locations.size(); i++) {
+            pHsObjects[i] = (Object)pHs[i];
+        }
+        for (int i = 0; i < locations.size(); i++) {
+            nitriteObjects[i] = (Object)nitrites[i];
+        }
+        return new Object[][]{location, year, pHsObjects, nitriteObjects};
     }
 
     public double getPHAverage () {
@@ -62,6 +75,10 @@ public class DataSet {
 
     public double[] getNitriteRange () {
         return new double[] {nitriteStats.getMin(), nitriteStats.getMax()};
+    }
+
+    public ArrayList<Location> getLocations() {
+        return locations;
     }
 
     // public double getPHAverage () {
@@ -115,12 +132,13 @@ public class DataSet {
     // }
 
 
-    public static void main (String[] args) throws IOException {
-        Scanner dataIn = new Scanner(new File("AllTheDataCorrected.txt"));
-        PrintWriter dataOut = new PrintWriter(new BufferedWriter(new FileWriter(new File("Nitrite_vs_pH.txt"))));
+    public void main (String[] args) throws IOException {
+        Scanner dataIn = new Scanner(new File("src/main/resources/data/AllTheDataCorrected.txt"));
+        PrintWriter dataOut = new PrintWriter(new BufferedWriter(new FileWriter(new File("src/main/resources/data/Nitrite_vs_pH.txt"))));
         while (dataIn.hasNextLine()) {
             Location data = new Location(dataIn.nextLine());
-            dataOut.println(data.getLocation() + " " + data.getNitrite() + " " + data.getPH());
+            locations.add(data);
+            dataOut.println(data.getLocation() + " " + data.getYear() + " " + data.getNitrite() + " " + data.getPH());
         }
         dataOut.flush();
         dataOut.close();

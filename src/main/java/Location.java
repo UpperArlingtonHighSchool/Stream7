@@ -20,25 +20,28 @@ public class Location {
     private Double Tchlorine;
     private Double salinity;
     private Double hardness;
+    private Double flowRate;
 
     public Location (String line) throws FileNotFoundException {
         Scanner dataIn = new Scanner(line);
 
         location = dataIn.next();
         year = dataIn.nextInt();
-        nitrite = dataIn.nextDouble();
-        nitrate = dataIn.nextDouble();
-        phosphate = dataIn.nextDouble();
-        conduc = dataIn.nextDouble();
+        flowRate = dataIn.nextDouble();
         turbidity = dataIn.nextDouble();
         temp = dataIn.nextDouble();
         TDS = dataIn.nextDouble();
-        pH = dataIn.nextDouble();
-        alk = dataIn.nextDouble();
-        Fchlorine = dataIn.nextDouble();
-        Tchlorine = dataIn.nextDouble();
+        conduc = dataIn.nextDouble();
         salinity = dataIn.nextDouble();
         hardness = dataIn.nextDouble();
+        Tchlorine = dataIn.nextDouble();
+        Fchlorine = dataIn.nextDouble();
+        alk = dataIn.nextDouble();
+        pH = dataIn.nextDouble();
+        nitrate = dataIn.nextDouble();
+        nitrite = dataIn.nextDouble();
+        phosphate = dataIn.nextDouble();
+
 
         dataIn.close();
     }

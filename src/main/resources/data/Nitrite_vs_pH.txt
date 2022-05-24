@@ -1,20 +1,19 @@
-Hastings/FireStation 1.6 0.4
-Henderson 2.3 0.4
-SmithPark 0.0 0.0
-LaneRoad 1.8 0.4
-Hastings/FireStation 2.0 0.3
-LaneRoad 2.5 0.5
-SmithPark 1.0 0.5
-Henderson 2.0 0.8
-Hastings/FireStation 1.0 0.5
-OhioHealth 2.0 0.5
-Hastings/FireStation 1.7 0.0
-LaneRoad 1.5 0.5
-Henderson 1.7 0.4
-Hastings/FireStation 1.6 0.4
-MackenzieRoad 1.0 0.5
-LaneRoad 1.0 3.0
-GavinLane 1.5 0.5
-OSUgolfcourse 2.5 0.8
-ReedRoad 2.0 1.8
-SmithPark 2.3 0.4
+Hastings/FireStation 2017 0.0 7.3
+Henderson 2017 0.0 6.8
+SmithPark 2017 0.0 6.9
+LaneRoad 2017 0.0 8.2
+Hastings/FireStation 2016 0.0 7.2
+LaneRoad 2016 0.0 7.8
+SmithPark 2016 0.0 8.4
+Henderson 2016 0.0 8.4
+Hastings/FireStation 2016 0.0 8.4
+OhioHealth 2015 0.0 7.9
+LaneRoad 2015 0.0 7.0
+Henderson 2015 0.0 7.4
+Hastings/FireStation 2015 0.0 7.3
+MackenzieRoad 2014 0.2 7.5
+LaneRoad 2014 0.0 8.2
+GavinLane 2014 0.2 3.2
+OSUgolfcourse 2014 0.1 7.2
+ReedRoad 2014 0.2 8.0
+SmithPark 2014 0.0 7.8
