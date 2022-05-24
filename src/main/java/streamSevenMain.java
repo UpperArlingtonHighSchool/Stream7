@@ -31,6 +31,7 @@ public class streamSevenMain {
 
         //This is the part where Jack's program draws a cool chart of our values with JFreeCharts
         chartRunner jack = new chartRunner(pH_vs_nitrite.getMatrix());
+        File chart = jack.getChart();
         
         
     }
