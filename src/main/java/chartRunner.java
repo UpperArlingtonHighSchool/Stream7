@@ -19,7 +19,7 @@ public class chartRunner extends ApplicationFrame {
     }
 
     public void createChart() throws IOException {
-        barChart = ChartFactory.createBarChart("pH vs Nitrite", "pH / Nitrie", "Value", data, PlotOrientation.VERTICAL,
+        barChart = ChartFactory.createBarChart("pH vs Nitrite", "pH / Nitrite", "Value", data, PlotOrientation.VERTICAL,
                 true, true, false);
         int width = 640;
         int height = 480;
@@ -39,5 +39,4 @@ public class chartRunner extends ApplicationFrame {
         }
         return info;
     }
-
 }

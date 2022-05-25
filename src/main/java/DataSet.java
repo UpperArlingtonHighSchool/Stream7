@@ -12,17 +12,15 @@ import java.util.stream.DoubleStream;
 
 public class DataSet {
     
-    private ArrayList<Location> locations = new ArrayList<Location>();
+    private final ArrayList<Location> locations = new ArrayList<>();
 
-    private Object[] location;
-    private Object[] year;
-    private double[] pHs;
-    private double[] nitrites;
-
-    private Object[][] data;
+    private final Object[] location;
+    private final Object[] year;
+    private final double[] pHs;
+    private final double[] nitrites;
     
-    private DoubleSummaryStatistics pHStats;
-    private DoubleSummaryStatistics nitriteStats;
+    private final DoubleSummaryStatistics pHStats;
+    private final DoubleSummaryStatistics nitriteStats;
 
     public DataSet (String pathname) throws FileNotFoundException {
 
@@ -52,10 +50,10 @@ public class DataSet {
         Object[] pHsObjects = new Object[locations.size()];
         Object[] nitriteObjects = new Object[locations.size()];
         for (int i = 0; i < locations.size(); i++) {
-            pHsObjects[i] = (Object)pHs[i];
+            pHsObjects[i] = pHs[i];
         }
         for (int i = 0; i < locations.size(); i++) {
-            nitriteObjects[i] = (Object)nitrites[i];
+            nitriteObjects[i] = nitrites[i];
         }
         return new Object[][]{location, year, pHsObjects, nitriteObjects};
     }
@@ -107,12 +105,11 @@ public class DataSet {
        
         // use formula for calculating correlation 
         // coefficient.
-        float corr = (float)(n * sum_XY - sum_X * sum_Y)/
+
+        return (float)(n * sum_XY - sum_X * sum_Y)/
                      (float)(Math.sqrt((n * squareSum_X -
-                     sum_X * sum_X) * (n * squareSum_Y - 
+                     sum_X * sum_X) * (n * squareSum_Y -
                      sum_Y * sum_Y)));
-       
-        return corr;
     }
 
     // public double getPHAverage () {

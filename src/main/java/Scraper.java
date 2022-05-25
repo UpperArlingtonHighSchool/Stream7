@@ -10,13 +10,13 @@ import java.util.regex.Pattern;
 public class Scraper {
 
     /** Maximum acceptable Nitrite value (ppm) */
-    private double nitrite;
+    public static double nitrite;
 
     /** Minimum acceptable pH value */
-    private double pHMin;
+    public static double pHMin;
 
     /** Maximum acceptable pH value */
-    private double pHMax;
+    public static double pHMax;
 
     final String nitriteSite = "https://www.atsdr.cdc.gov/csem/nitrate-nitrite/standards.html";
     final Pattern nitritePattern = Pattern.compile("and for nitrites at (.*?) ppm");
