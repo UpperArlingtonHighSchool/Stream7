@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class streamSevenMain {
@@ -14,7 +15,7 @@ public class streamSevenMain {
         //This is the part where Nathan's program takes in the data from a text file and puts it into a matrix
         DataSet pH_vs_nitrite = new DataSet("src/main/resources/data/AllTheDataCorrected.txt");
         System.out.println("Here is a matrix containing each stream's pH and nitrite values-");
-<<<<<<< HEAD
+
         Object[][] mat = pH_vs_nitrite.getMatrix();
         
         //Here we use Nathan's methods to do great things
@@ -24,21 +25,7 @@ public class streamSevenMain {
         double[] pHRange = pH_vs_nitrite.getPHRange();
         double correlationCoefficient = pH_vs_nitrite.getCorrelationCoefficient();
         ArrayList<Location> locations = pH_vs_nitrite.getLocations();
-        
-        
-       
-
-        //This is the part where Jack's program draws a cool chart of our values with JFreeCharts
-        chartRunner jack = new chartRunner(pH_vs_nitrite.getMatrix());
-        GUI gui = new GUI();
-        gui.main(null);
-
-        
-        
-    }
-=======
         System.out.println(Arrays.deepToString(pH_vs_nitrite.getMatrix()));
->>>>>>> 2d5a6717fafea05539662e9b999e0a48149ecbce
 
         //This is the part where Collin's program gets the acceptable values off of the web
         Scraper collin = new Scraper();
