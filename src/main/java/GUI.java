@@ -36,7 +36,7 @@ public class GUI extends JFrame {
         c.gridwidth = GridBagConstraints.REMAINDER;
         add(acceptableNitrite, c);
 
-        c.gridwidth = 1;
+        c.gridwidth = 2;
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(columnNames);
         table = new JTable(model) {
