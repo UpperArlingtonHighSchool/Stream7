@@ -1,4 +1,3 @@
-package src.main.java;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -26,15 +25,16 @@ public class DataSet {
     private DoubleSummaryStatistics nitriteStats;
 
     public DataSet (String pathname) throws FileNotFoundException {
-        location = new Object[locations.size()];
-        year = new Object[locations.size()];
-        pHs = new double[locations.size()];
-        nitrites = new double[locations.size()];
 
         Scanner lineChopper = new Scanner(new File(pathname));
         while (lineChopper.hasNextLine()) {
             locations.add(new Location(lineChopper.nextLine()));
         }
+
+        location = new Object[locations.size()];
+        year = new Object[locations.size()];
+        pHs = new double[locations.size()];
+        nitrites = new double[locations.size()];
 
         for (int i = 0; i < locations.size(); i++) {
             location[i] = locations.get(i).getLocation();
@@ -43,8 +43,8 @@ public class DataSet {
             nitrites[i] = locations.get(i).getNitrite();
         }
 
-        DoubleSummaryStatistics pHStats = DoubleStream.of(pHs).summaryStatistics();
-        DoubleSummaryStatistics nitriteStats = DoubleStream.of(nitrites).summaryStatistics();
+        pHStats = DoubleStream.of(pHs).summaryStatistics();
+        nitriteStats = DoubleStream.of(nitrites).summaryStatistics();
 
     }
 

@@ -1,12 +1,14 @@
-package src.main.java;
+
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.jfree.*;
 import org.jfree.chart.JFreeChart;
 public class streamSevenMain {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
         //This is the part where Collin's program gets the acceptable values off of the web
         Scraper collin = new Scraper();
@@ -22,7 +24,7 @@ public class streamSevenMain {
         // chartRunner jack = new chartRunner();
 
         //This is the part where Nathan's program takes in the data from a text file and puts it into a matrix
-        DataSet pH_vs_nitrite = new DataSet("src/main/resources/data/Nitrite_vs_pH.txt");
+        DataSet pH_vs_nitrite = new DataSet("src/main/resources/data/AllTheDataCorrected.txt");
         System.out.println("Here is a matrix containing each stream's pH and nitrite values-");
         Object[][] mat = pH_vs_nitrite.getMatrix();
         

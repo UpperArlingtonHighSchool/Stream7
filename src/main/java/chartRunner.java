@@ -1,6 +1,8 @@
 import java.io.File;
+import java.io.IOException;
 
 import org.jfree.chart.*;
+import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.*;
 
@@ -10,13 +12,13 @@ public class chartRunner extends ApplicationFrame {
     DefaultCategoryDataset data;
     File BarChart;
 
-    public chartRunner(Object[][] dataIn) {
+    public chartRunner(Object[][] dataIn) throws IOException {
         super("Application");
         data = getData(dataIn);
         createChart();
     }
 
-    public void createChart() {
+    public void createChart() throws IOException {
         barChart = ChartFactory.createBarChart("pH vs Nitrite", "pH / Nitrie", "Value", data, PlotOrientation.VERTICAL,
                 true, true, false);
         int width = 640;
