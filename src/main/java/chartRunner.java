@@ -34,8 +34,8 @@ public class chartRunner extends ApplicationFrame {
     public DefaultCategoryDataset getData(Object[][] dat) {
         DefaultCategoryDataset info = new DefaultCategoryDataset();
         for (int i = 0; i < dat.length; i++) {
-            info.addValue((int) dat[2][i], "pH", (String) dat[0][i] + " " + (String) dat[1][i]);
-            info.addValue((int) dat[3][i], "Nitrite", (String) dat[0][i] + " " + (String) dat[1][i]);
+            info.addValue((double) dat[2][i], "pH", dat[0][i] + " " + dat[1][i]);
+            info.addValue((double) dat[3][i], "Nitrite", dat[0][i] + " " + dat[1][i]);
         }
         return info;
     }
