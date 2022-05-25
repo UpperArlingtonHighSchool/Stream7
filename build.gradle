@@ -22,3 +22,8 @@ repositories {
 dependencies {
     implementation group: 'org.jfree', name: 'jfreechart', version: '1.0.19'
 }
+
+sourceSets {
+    main.java.srcDirs = ['src/main/java']
+    main.resources.srcDirs = ['src/main/resources']
+}
