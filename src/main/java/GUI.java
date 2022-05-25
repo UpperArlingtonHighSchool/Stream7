@@ -60,7 +60,7 @@ public class GUI extends JFrame {
     }
     
     public static void main(String[] args) throws FileNotFoundException {
-        DataSet pH_vs_nitrite = new DataSet("src/main/resources/data/Nitrite_vs_pH.txt");
+        DataSet pH_vs_nitrite = new DataSet("src/main/resources/data/AllTheDataCorrected.txt");
         GUI gui = new GUI();
         gui.setData(pH_vs_nitrite.getMatrix());
         gui.populateTable();
