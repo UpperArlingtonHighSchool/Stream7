@@ -1,11 +1,11 @@
-package src.main.java;
+
 import java.io.File;
 import java.util.ArrayList;
 
 import org.jfree.*;
 import org.jfree.chart.JFreeChart;
 public class streamSevenMain {
-
+//This is David Butz(Group Leader) coding the main method and adding comments
     public static void main(String[] args) {
         
         //This is the part where Collin's program gets the acceptable values off of the web
@@ -18,8 +18,7 @@ public class streamSevenMain {
         System.out.println("Acceptable maximum pH level = "+ maxPH);
         //Hey Dr. Kahle! How are you doing? I hope you are having a good day! 
 
-        // //This is the part where Jack's program draws a cool chart of our values with JFreeCharts
-        // chartRunner jack = new chartRunner();
+        
 
         //This is the part where Nathan's program takes in the data from a text file and puts it into a matrix
         DataSet pH_vs_nitrite = new DataSet("src/main/resources/data/Nitrite_vs_pH.txt");
